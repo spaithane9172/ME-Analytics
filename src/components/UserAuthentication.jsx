@@ -3,14 +3,14 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const UserAuthentication = () => {
+const UserAuthentication = ({ setIsAuthenticationOpen }) => {
   const [isEmailFocus, setIsEmailFocus] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(true);
   const authRef = useRef(null);
   useEffect(() => {
     const Close = (e) => {
       if (authRef.current && !authRef.current.contains(e.target)) {
-        setIsLoginOpen(false);
+        setIsAuthenticationOpen(false);
       }
     };
     document.addEventListener("mousedown", Close);
@@ -19,9 +19,9 @@ const UserAuthentication = () => {
     };
   }, []);
   return (
-    <div className="absolute w-[100vw] h-[100vh] bg-white/5 backdrop-blur-2xl z-1 flex justify-center items-center">
+    <div className="absolute w-[100vw] h-[100vh] bg-white/5 backdrop-blur-2xl z-50 flex justify-center items-center ">
       <div
-        className="darkBg flex w-[60vw]  p-[1rem] rounded-lg shadow-lg"
+        className="darkBg flex w-[60vw]  p-[1rem] rounded-lg shadow-lg z-50"
         ref={authRef}
       >
         <AnimatePresence mode="wait">

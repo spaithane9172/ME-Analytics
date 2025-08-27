@@ -48,7 +48,11 @@ const Navbar = () => {
           </div>
           <div>
             <div className="border-[1px] border-gray-500 px-[0.5rem] rounded-full py-[0.35rem]">
-              <input type="text" className="outline-none px-[0.5rem]" />
+              <input
+                type="text"
+                className="outline-none px-[0.5rem]"
+                placeholder="Search..."
+              />
               <i className="fa-solid fa-magnifying-glass cursor-pointer"></i>
             </div>
           </div>

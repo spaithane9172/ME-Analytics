@@ -1,8 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 const Table = ({ header, data }) => {
   return (
-    <div className="w-full h-[5rem] mt-[1rem]">
+    <div className="w-full h-[5rem] mt-3">
       <table className="border-[1px] border-gray-500 rounded-md shadow-lg w-full">
         <thead className="sticky border-b-[1px] border-gray-500 bg-white/5 backdrop-blur-2x">
           <tr>
@@ -23,14 +24,17 @@ const Table = ({ header, data }) => {
                 key={indx}
                 className={`border-b-[1px] border-gray-500 ${
                   indx % 2 === 1 ? "bg-white/5 backdrop-blur-2xl" : "darkBg"
-                }`}
+                } cursor-pointer`}
               >
                 <td className="text-center py-[1rem]">{metal.id}</td>
                 <td className="text-center py-[1rem] flex">
-                  <div className="flex justify-center items-center font-semibold border-[1px] border-blue-600 bg-blue-800  backdrop-blur-2xl w-[2rem] h-[2rem] rounded-full text-[0.8rem] mr-[1rem]">
-                    {metal.chem}
-                  </div>
-                  {metal.name}
+                  <Link href={"/metalDetails/" + indx} className="flex">
+                    {" "}
+                    <div className="flex justify-center items-center font-semibold border-[1px] border-blue-600 bg-blue-800  backdrop-blur-2xl w-[2rem] h-[2rem] rounded-full text-[0.8rem] mr-[1rem]">
+                      {metal.chem}
+                    </div>
+                    {metal.name}
+                  </Link>
                 </td>
                 <td className="text-center py-[1rem]">{metal.price}</td>
                 <td

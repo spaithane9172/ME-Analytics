@@ -3,10 +3,24 @@ import { navLinks } from "@/data/NavLinks";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import UserAuthentication from "@/components/UserAuthentication";
-import { useState } from "react";
-
+import { useEffect, useRef, useState } from "react";
+import { profileIconData } from "@/data/ProifleIconData";
 const Navbar = () => {
   const [isAuthenticationOpen, setIsAuthenticationOpen] = useState(false);
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const profileMenuRef = useRef(null);
+  useEffect(() => {
+    const close = (e) => {
+      if (
+        profileMenuRef.current &&
+        !profileMenuRef.current.contains(e.target)
+      ) {
+        setIsProfileMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", close);
+    return () => document.removeEventListener("mousedown", close);
+  }, []);
   return (
     <>
       <nav className="px-[1rem] py-[1rem] border-b-[1px] border-gray-500 flex items-center justify-between fixed w-full bg-white/5 backdrop-blur-2xl z-50">
@@ -66,12 +80,34 @@ const Navbar = () => {
             >
               Login
             </motion.button>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="rounded-full mx-[1rem] border-[1px] border-gray-500 w-[2rem] h-[2rem] flex justify-center items-center cursor-pointer"
-            >
-              <i className="fa-solid fa-user text-[1.2rem]"></i>
-            </motion.div>
+            <div className="relative">
+              <motion.button
+                onClick={() => {
+                  setIsProfileMenuOpen(true);
+                }}
+                whileHover={{ scale: 1.05 }}
+                className="rounded-full mx-[1rem] border-[1px] border-gray-500 w-[2rem] h-[2rem] flex justify-center items-center cursor-pointer"
+              >
+                <i className="fa-solid fa-user text-[1.2rem]"></i>
+              </motion.button>
+              {isProfileMenuOpen && (
+                <div ref={profileMenuRef} className="absolute top-13 right-0">
+                  <ul className="w-[20vw] darkBg border-[2px] border-gray-500 rounded-sm shadow-lg">
+                    {profileIconData.map((item) => {
+                      return (
+                        <li
+                          key={item.text}
+                          className="px-[1rem] py-[0.7rem] border-b-[1px] border-gray-500 cursor-pointer hover:bg-gray-900 hover:rounded-lg"
+                        >
+                          <i className={`${item.icon} mr-3`}></i>
+                          {item.text}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </nav>

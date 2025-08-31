@@ -51,6 +51,7 @@ const MetalChart = ({ data }) => {
     "3Months",
     "6Months",
     "1Year",
+    "All",
   ];
   const dropDownRef = useRef(null);
 
@@ -76,7 +77,7 @@ const MetalChart = ({ data }) => {
           <div className="flex justify-between px-[1rem] py-[0.2rem]">
             <p>{range}</p>
             <p>
-              <i class="fa-solid fa-caret-down"></i>
+              <i className="fa-solid fa-caret-down"></i>
             </p>
           </div>
           {showDropDown && (

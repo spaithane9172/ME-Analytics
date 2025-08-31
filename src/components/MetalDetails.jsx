@@ -15,7 +15,7 @@ const MetalDetails = () => {
   }, []);
 
   return (
-    <div className="bg-white/5 backdrop-blur-2xl w-1/2 mr-3 px-[1rem] py-[1rem]">
+    <div className="bg-white/5 backdrop-blur-2xl  px-[1rem] py-[1rem]">
       <div className="flex items-center border-b-[1px] border-gray-500 pb-[1rem]">
         <div className="flex flex-col justify-center w-1/2">
           <div className="flex items-center mb-[1rem]">

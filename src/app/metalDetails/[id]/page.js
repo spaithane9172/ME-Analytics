@@ -1,13 +1,15 @@
-import { MetalTableData } from "@/data/MetalTableData";
+import MetalChart from "@/components/MetalChart";
+import MetalDetails from "@/components/MetalDetails";
+import { goldPriceData } from "@/data/sampleDataForChart";
 
 const page = async ({ params }) => {
   const { id } = await params;
   return (
-    <div className="pt-[5rem] text-white px-[1rem]">
-      <div className="bg-white/5 backdrop-blur-2xl w-1/2">
-        <h1>Gold</h1>
+    <div className="pt-[5rem] text-white px-[1rem] flex ">
+      <MetalDetails />
+      <div className="w-1/2">
+        <MetalChart data={goldPriceData} />
       </div>
-      <div className="w-1/2"> chart</div>
     </div>
   );
 };

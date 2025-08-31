@@ -24,12 +24,14 @@ const Navbar = () => {
   return (
     <>
       <nav className="px-[1rem] py-[1rem] border-b-[1px] border-gray-500 flex items-center justify-between fixed w-full bg-white/5 backdrop-blur-2xl z-50">
-        <div className="flex items-center cursor-pointer">
-          <i className="fa-solid fa-arrow-trend-up bg-gradient-to-r from-blue-700 to-pink-700 text-transparent bg-clip-text text-[2rem]"></i>
-          <h1 className="px-[1rem] text-[1.5rem] font-semibold">
-            ME Analytics
-          </h1>
-        </div>
+        <Link href={"/"}>
+          <div className="flex items-center cursor-pointer">
+            <i className="fa-solid fa-arrow-trend-up bg-gradient-to-r from-blue-700 to-pink-700 text-transparent bg-clip-text text-[2rem]"></i>
+            <h1 className="px-[1rem] text-[1.5rem] font-semibold">
+              ME Analytics
+            </h1>
+          </div>
+        </Link>
         <div className="flex items-center">
           <ul className="flex">
             {navLinks.map((link) => {
